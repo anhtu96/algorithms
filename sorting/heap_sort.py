@@ -40,15 +40,12 @@ def heap_extract_max(arr):
     max_heapify(arr, heap_size, 0)
     return max_val
 
-def heap_increase_key(arr, i, key):
-    if key < arr[i]:
-        return "new key is smaller than current key"
-    arr[i] = key
-    while i > 0 and arr[(i+1)//2-1] < arr[i]:
-        arr[(i+1)//2-1], arr[i] = arr[i], arr[(i+1)//2-1]
-        i = (i+1)//2-1
 
 def heap_insert(arr, key):
-    arr.append(-math.inf)
-    heap_size = len(arr)
-    heap_increase_key(arr, heap_size-1, key)
+    arr.append(key)
+    i = len(arr) - 1
+    parent = (i-1) // 2
+    while i > 0 and arr[parent] < arr[i]:
+        arr[parent], arr[i] = arr[i], arr[parent]
+        i = parent
+        parent = (i-1) // 2
