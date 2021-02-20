@@ -21,7 +21,7 @@ def bfs(g, s):
 
     while queue:
         u = queue.popleft()
-        for n in g.adj[u]:
+        for n in g.neighbors(u):
             if n not in r.level:
                 r.parent[n] = u
                 r.level[n] = r.level[u] + 1
